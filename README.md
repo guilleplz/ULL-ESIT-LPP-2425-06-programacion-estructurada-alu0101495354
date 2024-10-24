@@ -1,6 +1,8 @@
 # Practica 06 - Programación estructurada
 **Guillermo Plaza Gayan** - *alu0101495354*
 
+---
+
 ## Introducción:
 
 Este proyecto implementa una serie de funciones en Ruby para determinar si dos secuencias de instrucciones pueden ejecutarse de forma concurrente o paralela, basándose en las Condiciones de Bernstein. El proyecto también utiliza RSpec para realizar pruebas siguiendo la metodología de Desarrollo Dirigido por Pruebas (TDD).
@@ -16,6 +18,8 @@ Este proyecto implementa una serie de funciones en Ruby para determinar si dos s
 └── spec
     └── test_conjuntos.rb  # Tests RSpec
 ```
+
+---
 
 ## Funciones
 
@@ -63,6 +67,8 @@ def verificar_condiciones_bernstein(instrucciones_1, instrucciones_2)
 end
 ```
 
+---
+
 ## Pruebas:
 
 Las pruebas están definidas utilizando RSpec y siguen la metodología Test Driven Development (TDD). A continuación se describe la estructura y propósito de los tests.
@@ -82,7 +88,7 @@ end
 
 ```
 
-2. Prueba para conjunto_escritura
+### Prueba para conjunto_escritura
 Esta prueba verifica que la función conjunto_escritura devuelva correctamente las variables escritas por las instrucciones.
 
 ``` rb
@@ -95,7 +101,7 @@ end
 
 ```
 
-3. Prueba para verificar_condiciones_bernstein
+### Prueba para verificar_condiciones_bernstein
 Esta prueba verifica si dos conjuntos de instrucciones pueden ejecutarse en paralelo siguiendo las Condiciones de Bernstein.
 
 ``` rb
@@ -120,3 +126,9 @@ describe '#verificar_condiciones_bernstein' do
 end
 
 ```
+
+---
+
+## Conclusión:
+
+Este proyecto proporciona una implementación simple pero efectiva para verificar las Condiciones de Bernstein, lo que permite evaluar la posibilidad de ejecución concurrente y paralela de instrucciones en programas. Mediante el uso de RSpec y la metodología de TDD, se garantiza que el código sea confiable y fácil de mantener. Esta herramienta puede ser útil para desarrolladores que busquen optimizar la ejecución de sus programas y entender mejor las interacciones entre diferentes secciones de código.
