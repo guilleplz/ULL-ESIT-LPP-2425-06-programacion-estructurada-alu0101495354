@@ -34,4 +34,10 @@ describe "Condiciones de Bernstein" do
     end
   end
 
+  describe '#conjunto_escritura' do
+    it 'devuelve el conjunto correcto de escritura' do
+      expect(conjunto_escritura(instrucciones_1)).to eq(['b', 'c'])
+    end
+  end
+
 end
