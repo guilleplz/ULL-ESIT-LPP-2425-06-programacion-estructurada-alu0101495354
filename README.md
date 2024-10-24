@@ -62,3 +62,61 @@ def verificar_condiciones_bernstein(instrucciones_1, instrucciones_2)
   no_interferencia_1 && no_interferencia_2 && no_interferencia_escritura
 end
 ```
+
+## Pruebas:
+
+Las pruebas están definidas utilizando RSpec y siguen la metodología Test Driven Development (TDD). A continuación se describe la estructura y propósito de los tests.
+
+**Archivo de pruebas:** spec/bernstein_conditions_spec.rb
+
+### Prueba para conjunto_lectura
+
+Esta prueba verifica que la función conjunto_lectura devuelva correctamente las variables leídas por las instrucciones.
+``` rb
+describe '#conjunto_lectura' do 
+  it 'devuelve el conjunto correcto de lectura' do 
+    instrucciones = [ { lectura: ['a'], escritura: ['b'] }, { lectura: ['b'], escritura: ['c'] } ] 
+    expect(conjunto_lectura(instrucciones)).to eq(['a', 'b']) 
+  end 
+end
+
+```
+
+2. Prueba para conjunto_escritura
+Esta prueba verifica que la función conjunto_escritura devuelva correctamente las variables escritas por las instrucciones.
+
+``` rb
+describe '#conjunto_escritura' do 
+  it 'devuelve el conjunto correcto de escritura' do 
+    instrucciones = [ { lectura: ['a'], escritura: ['b'] }, { lectura: ['b'], escritura: ['c'] } ] 
+    expect(conjunto_escritura(instrucciones)).to eq(['b', 'c']) 
+  end 
+end
+
+```
+
+3. Prueba para verificar_condiciones_bernstein
+Esta prueba verifica si dos conjuntos de instrucciones pueden ejecutarse en paralelo siguiendo las Condiciones de Bernstein.
+
+``` rb
+describe '#verificar_condiciones_bernstein' do 
+
+  let() do 
+    [ { lectura: ['a'], escritura: ['b'] }, { lectura: ['b'], escritura: ['c'] } ] 
+  end
+
+  let() do 
+    [ { lectura: ['d'], escritura: ['e'] }, { lectura: ['e'], escritura: ['f'] } ] 
+  end
+
+  it 'permite la ejecución concurrente' do 
+    expect(verificar_condiciones_bernstein(instrucciones_1, instrucciones_2)).to be true 
+  end
+
+  it 'detecta conflictos en ejecución concurrente' do 
+    instrucciones_conflictivas = [ { lectura: ['b'], escritura: ['a'] }, { lectura: ['c'], escritura: ['d'] } ] 
+    expect(verificar_condiciones_bernstein(instrucciones_1, instrucciones_conflictivas)).to be false 
+  end 
+end
+
+```
