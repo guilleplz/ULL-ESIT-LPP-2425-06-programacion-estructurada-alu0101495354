@@ -1,0 +1,6 @@
+task :default => :spec
+
+desc "Ejecutar las espectativas de las funciones de figuras geométricas"
+task :spec do
+  sh "rspec -I. spec/figgeo_spec.rb"
+end
