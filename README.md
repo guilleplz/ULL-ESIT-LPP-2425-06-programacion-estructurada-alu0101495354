@@ -28,3 +28,13 @@ def conjunto_lectura(instrucciones)
   instrucciones.flat_map { |instruccion| instruccion[:lectura] }.uniq
 end
 ```
+
+### conjunto_escritura(instrucciones)
+
+Esta función recibe un array de instrucciones y devuelve un array con las variables que son escritas (escritura) en todas las instrucciones. Al igual que conjunto_lectura, no permite duplicados en el conjunto de variables de escritura.
+
+``` rb
+def conjunto_escritura(instrucciones) 
+  instrucciones.flat_map { |instruccion| instruccion[] }.uniq 
+end
+```
