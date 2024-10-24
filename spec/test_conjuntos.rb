@@ -40,4 +40,18 @@ describe "Condiciones de Bernstein" do
     end
   end
 
+  describe '#verificar_condiciones_bernstein' do
+  context 'cuando no hay conflicto entre las secuencias' do
+    it 'permite la ejecución concurrente' do
+      expect(verificar_condiciones_bernstein(instrucciones_1, instrucciones_2)).to be true
+    end
+  end
+
+  context 'cuando hay conflicto entre las secuencias' do
+    it 'no permite la ejecución concurrente' do
+      expect(verificar_condiciones_bernstein(instrucciones_1, instrucciones_conflictivas)).to be false
+    end
+  end
+end
+
 end
